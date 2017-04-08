@@ -32,13 +32,13 @@ exports.read_a_task = function(req, res) {
 };
 
 exports.update_a_task = function(req, res) {
-  Task.findOneAndUpdate(req.params.taskId, req.body, {new: true}, function(err, task) {
+  Task.findOneAndUpdate({ _id: req.params.taskId }, req.body, { new: true }, function(err, task) {
     if (err)
       res.send(err);
     res.json(task);
   });
 };
-// Task.remove({}).exec(function(){});
+
 exports.delete_a_task = function(req, res) {
 
   Task.remove({

@@ -4,7 +4,8 @@
   "description": "RESTful todoListApi",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=test mocha --timeout 10000",
+    "test-coverage": "NODE_ENV=test istanbul cover _mocha -- -R spec",
     "start": "nodemon server.js"
   },
   "repository": {
@@ -23,7 +24,13 @@
   },
   "homepage": "https://github.com/generalgmt/RESTfulAPITutorial#readme",
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "chai": "^3.5.0",
+    "install": "^0.8.8",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0",
+    "npm": "^4.4.4",
+    "supertest": "^3.0.0"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
