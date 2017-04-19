@@ -14,6 +14,8 @@
   "keywords": [
     "RESTful",
     "API",
+    "Authentication",
+    "JWT",
     "Tutorial"
   ],
   "author": "olatunde garuba",
@@ -26,8 +28,10 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "jsonwebtoken": "^7.3.0",
     "mongoose": "^4.7.2"
   }
 }
