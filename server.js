@@ -37,8 +37,10 @@ app.use(function(req, res) {
   res.status(404).send({ url: req.originalUrl + ' not found' })
 });
 
-app.listen(config.port);
-
+app.listen(config.port, function(){
 console.log('todo list RESTful API server started on: ' + config.port);
+  
+});
+
 
 module.exports = app;
