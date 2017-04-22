@@ -7,7 +7,7 @@ var express = require('express'),
   Task = require('./api/models/todoListModel'),
   User = require('./api/models/userModel'),
   bodyParser = require('body-parser'),
-  jsonwebtoken = require("jsonwebtoken");
+  jsonwebtoken = require("jsonwebtoken"),
   config = require('./config/index'),
   bodyParser = require('body-parser');
 
