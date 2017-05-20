@@ -25,15 +25,10 @@ exports.sign_in = function(req, res) {
     email: req.body.email
   }, function(err, user) {
     if (err) throw err;
-    if (!user) {
-      res.status(401).json({ message: 'Authentication failed. User not found.' });
-    } else if (user) {
-      if (user.comparePassword(req.body.password)) {
-        res.status(401).json({ message: 'Authentication failed. Wrong password.' });
-      } else {
-        return res.json({token: jwt.sign({ email: user.email, fullName: user.fullName, _id: user._id}, 'RESTFULAPIs')});
-      }
+    if (!user || !user.comparePassword(req.body.password)) {
+      return res.status(401).json({ message: 'Authentication failed. Invalid user or password.' });
     }
+    return res.json({ token: jwt.sign({ email: user.email, fullName: user.fullName, _id: user._id }, 'RESTFULAPIs') });
   });
 };
 
