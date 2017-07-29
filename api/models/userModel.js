@@ -27,6 +27,12 @@ var UserSchema = new Schema({
   created: {
     type: Date,
     default: Date.now
+  },
+  reset_password_token: {
+    type: String
+  },
+  reset_password_expires: {
+    type: Date
   }
 });
 

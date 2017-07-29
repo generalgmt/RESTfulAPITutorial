@@ -10,11 +10,13 @@ var express = require('express'),
   jsonwebtoken = require("jsonwebtoken");
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/Tododb');
+mongoose.connect('mongodb://localhost/Tododb', {useMongoClient: true});
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(express.static(__dirname + '/public'));
 
 app.use(function(req, res, next) {
   if (req.headers && req.headers.authorization && req.headers.authorization.split(' ')[0] === 'JWT') {
