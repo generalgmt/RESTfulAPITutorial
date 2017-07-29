@@ -9,14 +9,16 @@ var mongoose = require('mongoose'),
   crypto = require('crypto'),
   _ = require('lodash'),
   hbs = require('nodemailer-express-handlebars'),
+  email = process.env.MAILER_EMAIL_ID || 'auth_email_address@gmail.com',
+  pass = process.env.MAILER_PASSWORD || 'auth_email_pass'
   nodemailer = require('nodemailer');
 
 
 var smtpTransport = nodemailer.createTransport({
   service: process.env.MAILER_SERVICE_PROVIDER || 'Gmail',
   auth: {
-    user: process.env.MAILER_EMAIL_ID || 'auth_email_address',
-    pass: process.env.MAILER_PASSWORD || 'auth_email_pass'
+    user: email,
+    pass: pass
   }
 });
 
@@ -105,7 +107,7 @@ exports.forgot_password = function(req, res) {
     function(token, user, done) {
       var data = {
         to: user.email,
-        from: 'auth_email_address@gmail.com',
+        from: email,
         template: 'forgot-password-email',
         subject: 'Password help has arrived!',
         context: {
@@ -150,7 +152,7 @@ exports.reset_password = function(req, res, next) {
           } else {
             var data = {
               to: user.email,
-              from: 'auth_email_address@gmail.com',
+              from: email,
               template: 'reset-password-email',
               subject: 'Password Reset Confirmation',
               context: {
