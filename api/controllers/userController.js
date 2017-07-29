@@ -10,7 +10,7 @@ var mongoose = require('mongoose'),
   _ = require('lodash'),
   hbs = require('nodemailer-express-handlebars'),
   email = process.env.MAILER_EMAIL_ID || 'auth_email_address@gmail.com',
-  pass = process.env.MAILER_PASSWORD || 'auth_email_pass'
+  pass = process.env.MAILER_PASSWORD || 'auth_email_pass',
   nodemailer = require('nodemailer');
 
 
