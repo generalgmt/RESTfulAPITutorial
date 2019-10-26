@@ -43,6 +43,25 @@ yarn start
 
 ## Usage example
 
+### Listing tasks
+
+[Example (using axios):](https://github.com/axios/axios "Axios documentation")
+
+```javascript
+const todo = {
+  name: "Study NodeJS"
+};
+
+axios
+  .get("/tasks")
+  .then(response => {
+    console.log(response, "Tasks");
+  })
+  .catch(error => {
+    console.log(error, "Error");
+  });
+```
+
 ### Creating a task
 
 [Example (using axios):](https://github.com/axios/axios "Axios documentation")
@@ -50,16 +69,17 @@ yarn start
 ```javascript
 const todo = {
   name: "Study NodeJS"
-}
+};
 
-axios.post('/tasks', {
-    firstName: 'Fred',
-    lastName: 'Flintstone'
+axios
+  .post("/tasks", {
+    firstName: "Fred",
+    lastName: "Flintstone"
   })
-  .then((response) => {
+  .then(response => {
     console.log(response);
   })
-  .catch((error) => {
+  .catch(error => {
     console.log(error);
   });
 ```
