@@ -47,7 +47,7 @@ yarn start
 
 [Example (using axios):](https://github.com/axios/axios "Axios documentation")
 
-```
+```javascript
 const todo = {
   name: "Study NodeJS"
 }
