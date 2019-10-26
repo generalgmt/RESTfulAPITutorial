@@ -43,15 +43,11 @@ yarn start
 
 ## Usage example
 
-### Listing tasks
+### Listing all tasks
 
 [Example (using axios):](https://github.com/axios/axios "Axios documentation")
 
 ```javascript
-const todo = {
-  name: "Study NodeJS"
-};
-
 axios
   .get("/tasks")
   .then(response => {
@@ -67,14 +63,36 @@ axios
 [Example (using axios):](https://github.com/axios/axios "Axios documentation")
 
 ```javascript
-const todo = {
+const task = {
   name: "Study NodeJS"
 };
 
 axios
-  .post("/tasks", {
-    firstName: "Fred",
-    lastName: "Flintstone"
+  .post("/tasks", task)
+  .then(response => {
+    console.log(response);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+```
+
+### Updating a task
+
+[Example (using axios):](https://github.com/axios/axios "Axios documentation")
+
+```javascript
+const task = {
+  name: "Study NodeJS",
+  id: 45678
+};
+
+const { id } = task;
+
+axios
+  .put(`/tasks/${id}`, {
+    ...task,
+    name: "Commit stuff"
   })
   .then(response => {
     console.log(response);
@@ -84,15 +102,39 @@ axios
   });
 ```
 
-<!--
-('/tasks')
-.get(todoList.list_all_tasks)
-.post(todoList.create_a_task);
+### Deleting a single task
 
-    app.route('/tasks/:taskId')
-    	.get(todoList.read_a_task)
-    	.put(todoList.update_a_task)
-    	.delete(todoList.delete_a_task); -->
+[Example (using axios):](https://github.com/axios/axios "Axios documentation")
+
+```javascript
+const id = 54453;
+
+axios
+  .delete(`/tasks/${id}`)
+  .then(response => {
+    console.log(response);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+```
+
+### Listing a single task
+
+[Example (using axios):](https://github.com/axios/axios "Axios documentation")
+
+```javascript
+const id = 54453;
+
+axios
+  .get(`/tasks/${id}`)
+  .then(response => {
+    console.log(response);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+```
 
 ## Running the tests
 
