@@ -99,7 +99,7 @@ exports.forgot_password = function(req, res) {
            id: user._id
        };
        var secret = user._id + '_' + user.email + '_' + new Date().getTime();
-       var token = jwt.encode(tokenObject, secret);
+       var token = jwt.sign(tokenObject, secret);
        done(err, user, token);
     },
     function(user, token, done) {
