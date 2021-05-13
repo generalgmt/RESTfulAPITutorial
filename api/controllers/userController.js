@@ -93,14 +93,17 @@ exports.forgot_password = function(req, res) {
       });
     },
     function(user, done) {
-      // create the random token
-      crypto.randomBytes(20, function(err, buffer) {
-        var token = buffer.toString('hex');
-        done(err, user, token);
-      });
+      // create a unique token
+       var tokenObject = {
+           email: user.email,
+           id: user._id
+       };
+       var secret = user._id + '_' + user.email + '_' + new Date().getTime();
+       var token = jwt.encode(tokenObject, secret);
+       done(err, user, token);
     },
     function(user, token, done) {
-      User.findByIdAndUpdate({ _id: user._id }, { reset_password_token: token, reset_password_expires: Date.now() + 86400000 }, { upsert: true, new: true }).exec(function(err, new_user) {
+      User.findByIdAndUpdate({ _id: user._id }, { reset_password_token: token, reset_password_expires: Date.now() + 86400000 }, { new: true }).exec(function(err, new_user) {
         done(err, token, new_user);
       });
     },
