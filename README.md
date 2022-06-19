@@ -10,3 +10,4 @@ clone the project
 * npm run start
 
 :)
+Cheers
